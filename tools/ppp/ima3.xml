@@ -1,0 +1,44 @@
+<tool id="ima3" name="IMa3" version="1.0.0.1">
+  <description>Wrapper for IMa3 executable</description>
+
+  <command><![CDATA[
+  python $__tool_directory__/ima3_wrapper.py
+
+          -i $input
+          -o $output
+         
+          #if $popSize:
+          	-q $popSize
+          #end if 
+          
+          #if $migration:
+          	-m $migration
+          #end if
+          
+          #if $timeSplit:
+          	-t $timeSplit
+          #end if 
+          
+          
+  ]]></command>
+
+	<inputs>
+		<param name="input" type="data" label="IMa3 Input file"/>
+	
+		<section name="parameters" title="Parameter Arguments" expanded="True">
+			<param name="popSize" type="integer" label="Maximum Population Size Parameter for all populations" optional="True"/>
+			<param name="migration" type="float" label="Migration Rate Prior" optional="True"/>
+			<param name="timeSplit" type="integer" label="Maximum splitting time parameter" optional="True" />
+        	
+		</section>
+
+	</inputs>
+	<outputs>
+		<data name="output" format="tabular"/>
+	</outputs>
+	
+	<help>
+		VCF Filter Help Text
+	</help>
+
+</tool>
